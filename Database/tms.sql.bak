@@ -1,0 +1,354 @@
+/*
+SQLyog Ultimate v11.33 (32 bit)
+MySQL - 5.5.48 : Database - tms
+*********************************************************************
+*/
+
+/*!40101 SET NAMES utf8 */;
+
+/*!40101 SET SQL_MODE=''*/;
+
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`tms` /*!40100 DEFAULT CHARACTER SET latin1 */;
+
+USE `tms`;
+
+/*Table structure for table `addresses` */
+
+DROP TABLE IF EXISTS `addresses`;
+
+CREATE TABLE `addresses` (
+  `SerialNo` varchar(255) NOT NULL DEFAULT '',
+  `Address` varchar(255) DEFAULT NULL,
+  `District` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`SerialNo`),
+  KEY `address_id` (`SerialNo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `addresses` */
+
+insert  into `addresses`(`SerialNo`,`Address`,`District`) values ('1','HyderBad',NULL);
+
+/*Table structure for table `cities` */
+
+DROP TABLE IF EXISTS `cities`;
+
+CREATE TABLE `cities` (
+  `city_id` varchar(255) DEFAULT NULL,
+  `country_id` int(10) NOT NULL DEFAULT '0',
+  `city_name` varchar(255) DEFAULT NULL,
+  `city_location` varchar(255) DEFAULT NULL,
+  `other_details` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`country_id`),
+  KEY `city_id` (`city_id`),
+  KEY `country_id` (`country_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `cities` */
+
+/*Table structure for table `countries` */
+
+DROP TABLE IF EXISTS `countries`;
+
+CREATE TABLE `countries` (
+  `country_id` int(10) NOT NULL DEFAULT '0',
+  `country_name` varchar(255) DEFAULT NULL,
+  `country_region` varchar(255) DEFAULT NULL,
+  `tourism_web_site` varchar(255) DEFAULT NULL,
+  `population` varchar(255) DEFAULT NULL,
+  `language` varchar(255) DEFAULT NULL,
+  `religion` varchar(255) DEFAULT NULL,
+  `other_details` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`country_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `countries` */
+
+/*Table structure for table `days` */
+
+DROP TABLE IF EXISTS `days`;
+
+CREATE TABLE `days` (
+  `Emailid` varchar(255) DEFAULT NULL,
+  `Checkin` timestamp NULL DEFAULT NULL,
+  `checkout` timestamp NULL DEFAULT NULL,
+  KEY `Emailid` (`Emailid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `days` */
+
+insert  into `days`(`Emailid`,`Checkin`,`checkout`) values ('fg','2008-01-11 00:00:00','2008-01-13 00:00:00'),('fg','2008-01-11 00:00:00','2008-01-13 00:00:00'),('fg','2008-01-11 00:00:00','2008-01-13 00:00:00'),('dfg','2008-01-11 00:00:00','2008-01-13 00:00:00'),('sdfg','2008-01-11 00:00:00','2008-01-13 00:00:00'),('adf','2008-01-11 00:00:00','2008-01-13 00:00:00'),('dfgs','2008-01-11 00:00:00','2008-01-13 00:00:00'),('asdf','2008-01-11 00:00:00','2008-01-13 00:00:00'),('asdf','2008-01-11 00:00:00','2008-01-13 00:00:00'),('asdf','2008-01-11 00:00:00','2008-01-13 00:00:00'),('asdf','2008-01-11 00:00:00','2008-01-13 00:00:00'),('asdf','2008-01-11 00:00:00','2008-01-13 00:00:00'),('asdf','2008-01-11 00:00:00','2008-01-13 00:00:00'),('asdf','2008-01-11 00:00:00','2008-01-13 00:00:00'),('fgsdfg','2008-01-11 00:00:00','2008-01-13 00:00:00'),('sadfas','2008-01-11 00:00:00','2008-01-13 00:00:00'),('asdf','2008-01-11 00:00:00','2008-01-13 00:00:00'),('asdf','2008-01-11 00:00:00','2008-01-13 00:00:00'),('sadf','2008-01-11 00:00:00','2008-01-13 00:00:00'),('sdf','2008-01-11 00:00:00','2008-01-13 00:00:00'),('khkjh','2008-01-11 00:00:00','2008-01-13 00:00:00'),('gsdfg','2008-01-14 00:00:00','2008-01-17 00:00:00'),('dsfkg','2008-01-08 00:00:00','2008-01-10 00:00:00');
+
+/*Table structure for table `enterainement` */
+
+DROP TABLE IF EXISTS `enterainement`;
+
+CREATE TABLE `enterainement` (
+  `Sno` varchar(255) NOT NULL DEFAULT '',
+  `City` varchar(255) DEFAULT NULL,
+  `TheaterName` varchar(255) DEFAULT NULL,
+  `cinema` varchar(255) DEFAULT NULL,
+  `morningshow` varchar(255) DEFAULT NULL,
+  `matnyshow` varchar(255) DEFAULT NULL,
+  `firstshow` varchar(255) DEFAULT NULL,
+  `secondshow` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`Sno`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `enterainement` */
+
+insert  into `enterainement`(`Sno`,`City`,`TheaterName`,`cinema`,`morningshow`,`matnyshow`,`firstshow`,`secondshow`) values ('101','Hyderbad','Sandhya','okkamagadu','11.00am','2.00pm','6.00pm','9.00pm'),('102','Hyderbad','Odeoin','Pouradu','11.00am','2.00pm','6.00pm','9.00pm'),('103','Vijayawada','Alanakar','HappyDays','11:15pm','2.30pm','6:30pm','9.30pm'),('104','Tirupati','Venkateswara','badri','11.00pm','2.00pm','6.00pm','9.00pm'),('105','Vizag','hhhh','adi','11.00pm','2.00pm','6.00pm','9.00pm'),('106','Warangal','jjj','yyy','11.00pm','2.00pm','6.00pm','9.00pm'),('107','Nagarjunsagar','hsj','tttt','11.00pm','2.00pm','6.00pm','9.00pm');
+
+/*Table structure for table `hotelbooking` */
+
+DROP TABLE IF EXISTS `hotelbooking`;
+
+CREATE TABLE `hotelbooking` (
+  `Hotelid` varchar(255) DEFAULT NULL,
+  `Hotelname` varchar(255) DEFAULT NULL,
+  `FirstName` varchar(255) DEFAULT NULL,
+  `LastName` varchar(255) DEFAULT NULL,
+  `LandLineno` varchar(255) DEFAULT NULL,
+  `MobileNo` varchar(255) DEFAULT NULL,
+  `EmailID` varchar(255) DEFAULT NULL,
+  `CheckIn` timestamp NULL DEFAULT NULL,
+  `RoomType` varchar(255) DEFAULT NULL,
+  `Roomno` varchar(255) DEFAULT NULL,
+  `CheckOut` timestamp NULL DEFAULT NULL,
+  `TotalCost` varchar(255) DEFAULT NULL,
+  `city` varchar(255) DEFAULT NULL,
+  `State` varchar(255) DEFAULT NULL,
+  `Country` varchar(255) DEFAULT NULL,
+  `Pincode` varchar(255) DEFAULT NULL,
+  KEY `EmailID` (`EmailID`),
+  KEY `Hotelid` (`Hotelid`),
+  KEY `Pincode` (`Pincode`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `hotelbooking` */
+
+insert  into `hotelbooking`(`Hotelid`,`Hotelname`,`FirstName`,`LastName`,`LandLineno`,`MobileNo`,`EmailID`,`CheckIn`,`RoomType`,`Roomno`,`CheckOut`,`TotalCost`,`city`,`State`,`Country`,`Pincode`) values ('107','Minar','sdfk','khkhk','8687687','88768','bjgjgj','2008-01-16 00:00:00','superiour','5','2008-01-18 00:00:00','3535','fdgsd','ap','India',NULL),('103','nnn','kumar','kumar','9876','7879','ass1','2009-01-19 00:00:00','supriour','2','2009-01-20 00:00:00','1800','nnn','Andhra pradesh','India','521122'),('102','Kanacadurga','asfd','asdf','324','324','dfg','2008-01-09 00:00:00','superiour','3','2008-01-11 00:00:00','4200','Kanacadurga','Andhra pradesh','India','23423'),('102','Kanacadurga','asdf','asfd','324','3432','sdfg','2008-01-08 00:00:00','superiour','3','2008-01-10 00:00:00','4200','Kanacadurga','Andhra pradesh','India','4324'),('102','Vijayawada','asdf','asdf','3423','324','asdf','2008-01-15 00:00:00','superiour','3','2008-01-17 00:00:00','4200','asdf','dasf','sadf','32423'),('102','Vijayawada','asdf','asdf','23432','3423','fgsdfg','2008-01-15 00:00:00','superiour','3','2008-01-17 00:00:00','4200','fdgsd','sdfgsdfg','dfsgsd','32432'),('102','ADSF','asdf','asf','324','3243','asdf','2008-01-14 00:00:00','superiour','3','2008-01-18 00:00:00','4200','asdf','asdf','asdf','23432'),('102','kkj','k','asf','324','3243','asdf','2008-01-14 00:00:00','superiour','3','2008-01-18 00:00:00','4200','asdf','asdf','asdf','23432'),('102','Vijayawada','asdf','asdf','324','32432','sadf','2008-01-19 00:00:00','superiour','34','2008-01-20 00:00:00','47600','sdf','adsf','asfd','32432'),('102','Vijayawada','asdf','asdf','324','32432','sdf','2008-01-15 00:00:00','superiour','3','2008-01-26 00:00:00','4200','asdf','asfd','adsf','32423'),('102','Vijayawada','asdf','asfd','34322','32423','khkjh','2008-01-08 00:00:00','superiour','3','2008-01-25 00:00:00','4200','hkhkh','hkhkjh','hkhkjh','7979'),('102','Vijayawada','sdfg','sdfg','4543','43534','gsdfg','2008-01-14 00:00:00','superiour','5','2008-01-17 00:00:00','10500','sdfg','dsfg','fdg','45345'),('102','Vijayawada','ramu','ramu','08732745','4658364','dsfkg','2008-01-08 00:00:00','superiour','4','2008-01-10 00:00:00','5600','hyd','avg','india','9797'),('102','Kanacadurga','asdf','ssadf','343','343','adf','2008-01-15 00:00:00','superiour','3','2008-01-17 00:00:00','4200','Kanacadurga','Andhra pradesh','India','343'),('102','Vijayawada','dfgsd','sdfg','45','45','dfgs','2008-01-15 00:00:00','superiour','3','2008-01-17 00:00:00','4200','fgsdfg','sdfgs','sgsdf','345345'),('102','Vijayawada','asdf','asdf','3423','324','asdf','2008-01-15 00:00:00','superiour','3','2008-01-17 00:00:00','4200','asdf','dasf','sadf','32423'),('102','Vijayawada','asdf','asdf','3423','324','asdf','2008-01-15 00:00:00','superiour','3','2008-01-17 00:00:00','4200','asdf','dasf','sadf','32423'),('102','Vijayawada','asdf','asdf','3423','324','asdf','2008-01-15 00:00:00','superiour','3','2008-01-17 00:00:00','4200','asdf','dasf','sadf','32423'),('102','Vijayawada','asdf','asdf','3423','324','asdf','2008-01-15 00:00:00','superiour','3','2008-01-17 00:00:00','4200','asdf','dasf','sadf','32423'),('102','Vijayawada','asdf','asdf','3423','324','asdf','2008-01-15 00:00:00','superiour','3','2008-01-17 00:00:00','4200','asdf','dasf','sadf','32423');
+
+/*Table structure for table `hotelrooms` */
+
+DROP TABLE IF EXISTS `hotelrooms`;
+
+CREATE TABLE `hotelrooms` (
+  `HotelID` varchar(255) DEFAULT NULL,
+  `City` varchar(255) DEFAULT NULL,
+  `RoomType1` varchar(255) DEFAULT NULL,
+  `RoomType1cost` int(10) DEFAULT NULL,
+  `RoomType2` varchar(255) DEFAULT NULL,
+  `RoomType2cost` int(10) DEFAULT NULL,
+  `RoomType3` varchar(255) DEFAULT NULL,
+  `roomtype3cost` int(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `hotelrooms` */
+
+insert  into `hotelrooms`(`HotelID`,`City`,`RoomType1`,`RoomType1cost`,`RoomType2`,`RoomType2cost`,`RoomType3`,`roomtype3cost`) values (NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),('102','Vijayawada','superiour',700,'deluxe',1300,'superdeluxe',2200),('103','Hyderbad','superiour',700,'deluxe',1300,'superdeluxe',2200),('105','nagarjunsagar','superiour',700,'deluxe',1300,'superdeluxe',2200),('104','Vizag','superiour',700,'deluxe',1300,'superdeluxe',2200),('106','Warangal','superiour',700,'deluxe',1300,'superdeluxe',2200);
+
+/*Table structure for table `hotels` */
+
+DROP TABLE IF EXISTS `hotels`;
+
+CREATE TABLE `hotels` (
+  `HotelID` varchar(255) NOT NULL DEFAULT '',
+  `City` varchar(255) DEFAULT NULL,
+  `HotelName` text,
+  `MaxPrice` int(10) DEFAULT NULL,
+  `MinPrice1day` int(10) DEFAULT NULL,
+  `NoOfRooms` int(10) DEFAULT NULL,
+  `FulledRooms` int(10) DEFAULT NULL,
+  `FreeRooms` int(10) DEFAULT NULL,
+  PRIMARY KEY (`HotelID`),
+  KEY `hotel_toi_id` (`HotelID`),
+  KEY `star_rating_code` (`City`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `hotels` */
+
+insert  into `hotels`(`HotelID`,`City`,`HotelName`,`MaxPrice`,`MinPrice1day`,`NoOfRooms`,`FulledRooms`,`FreeRooms`) values ('102','Vijayawada','Kanacadurga',4500,1300,12,5,3),('103','Hyderbad','Minar',3400,1300,12,5,3),('104','Vizag','hhh',4367,1200,34,5,3),('105','nagarjunsagar','fgfg',3400,1200,23,5,3),('106','Warangal','hhh',4367,1200,34,5,3);
+
+/*Table structure for table `logindetails` */
+
+DROP TABLE IF EXISTS `logindetails`;
+
+CREATE TABLE `logindetails` (
+  `LoginName` varchar(255) NOT NULL DEFAULT '',
+  `Password` varchar(255) DEFAULT NULL,
+  `FirstName` varchar(255) DEFAULT NULL,
+  `LastName` varchar(255) DEFAULT NULL,
+  `MobileNo` varchar(255) DEFAULT NULL,
+  `logintype` varchar(255) DEFAULT NULL,
+  `Dob` varchar(255) DEFAULT NULL,
+  `squestionid` varchar(255) DEFAULT NULL,
+  `sanswer` varchar(255) DEFAULT NULL,
+  `passmodifieddate` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`LoginName`),
+  KEY `squestionid` (`squestionid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `logindetails` */
+
+insert  into `logindetails`(`LoginName`,`Password`,`FirstName`,`LastName`,`MobileNo`,`logintype`,`Dob`,`squestionid`,`sanswer`,`passmodifieddate`) values ('mahesh','reddy','Mahesh','Reddy','9012345678','user','21-FEB-2016','1','Birthday','21-FEB-2016'),('mahi','mahi','mahi','reddy','123','user','21-FEB-2016','1','a','21-FEB-2016');
+
+/*Table structure for table `loginprofile` */
+
+DROP TABLE IF EXISTS `loginprofile`;
+
+CREATE TABLE `loginprofile` (
+  `LoginName` varchar(255) NOT NULL DEFAULT '',
+  `DOb` varchar(255) DEFAULT NULL,
+  `city` varchar(255) DEFAULT NULL,
+  `State` varchar(255) DEFAULT NULL,
+  `Country` varchar(255) DEFAULT NULL,
+  `PinCode` varchar(255) DEFAULT NULL,
+  `Local` varchar(255) DEFAULT NULL,
+  `profilemodifieddate` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`LoginName`),
+  KEY `PinCode` (`PinCode`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `loginprofile` */
+
+insert  into `loginprofile`(`LoginName`,`DOb`,`city`,`State`,`Country`,`PinCode`,`Local`,`profilemodifieddate`) values ('adi','2009-10-10 00:00:00','Hyderabad','Andhra pradesh','India','521121','en_US','2008-01-21 00:00:00'),('adi123','2008-01-15 00:00:00','Hyderabad','Andhra pradesh','India','4535','en_US','2008-01-29 00:00:00'),('ashok','2008-01-23 00:00:00','Mumbai','Andhra pradesh','India','5211211','en_US','2008-01-29 00:00:00'),('dfd','2008-11-11 00:00:00','Hyderabad','Andhra pradesh','India','521121','en_US','2008-01-21 00:00:00'),('kiran','2008-01-11 00:00:00','Hyderabad','Andhra pradesh','India','545454','en_US','2008-01-21 00:00:00'),('lll','2009-02-12 00:00:00','Hyderabad','Andhra pradesh','India','767676','en_US','2008-01-21 00:00:00'),('llll','2008-07-07 00:00:00','Hyderabad','Andhra pradesh','India','521121','en_US','2008-01-21 00:00:00'),('mahesh','18-11-1986','Hyderabad','Andhra pradesh','India','500032','en_US','21-FEB-2016'),('nsic@gmail.com','2011-12-06 00:00:00','Hyderabad','Andhra pradesh','India','500044','en_US','2014-05-13 00:00:00'),('prasad','2008-01-16 00:00:00','Hyderabad','Andhra pradesh','India','432','en_US','2008-01-29 00:00:00'),('raja','2008-01-08 00:00:00','Hyderabad','Andhra pradesh','India','32432','en_US','2008-01-29 00:00:00'),('reddy@gmail.com','1988-01-01 00:00:00','Hyderabad','Andhra pradesh','India','500038','en_US','2016-02-13 00:00:00'),('yyy','2008-02-12 00:00:00','Hyderabad','Andhra pradesh','India','3423423','en_US','2008-01-22 00:00:00');
+
+/*Table structure for table `shopping` */
+
+DROP TABLE IF EXISTS `shopping`;
+
+CREATE TABLE `shopping` (
+  `Sno` int(10) NOT NULL DEFAULT '0',
+  `city` varchar(255) DEFAULT NULL,
+  `Shopname` varchar(255) DEFAULT NULL,
+  `Area` varchar(255) DEFAULT NULL,
+  `famous` varchar(255) DEFAULT NULL,
+  `discount` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`Sno`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `shopping` */
+
+insert  into `shopping`(`Sno`,`city`,`Shopname`,`Area`,`famous`,`discount`) values (101,'Hyderbad','RSBrothers','Patny','cloths','60%'),(102,'Vijayawada','ChandanaBrothers','AlankarCenter','cloths','30%'),(103,'Tirupati','Venkateswara','abc','gewelery','25%'),(104,'Vizag','BigBAgar','rushikonda','equpement','20%'),(105,'Warangal','bbbb','sdfs','dfsd','20%'),(106,'Nagarjunsagar','tttt','dfsdf','sdf','34%');
+
+/*Table structure for table `tourbooking` */
+
+DROP TABLE IF EXISTS `tourbooking`;
+
+CREATE TABLE `tourbooking` (
+  `LoginName` varchar(255) NOT NULL DEFAULT '',
+  `FromPlace` varchar(255) DEFAULT NULL,
+  `ToPlace` varchar(255) DEFAULT NULL,
+  `Depart` varchar(255) DEFAULT NULL,
+  `Return` varchar(255) DEFAULT NULL,
+  `Class` varchar(255) DEFAULT NULL,
+  `Adults` int(10) DEFAULT NULL,
+  `Childern` int(10) DEFAULT NULL,
+  `infants` int(10) DEFAULT NULL,
+  PRIMARY KEY (`LoginName`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `tourbooking` */
+
+/*Table structure for table `touristguides` */
+
+DROP TABLE IF EXISTS `touristguides`;
+
+CREATE TABLE `touristguides` (
+  `city` varchar(255) DEFAULT NULL,
+  `GuideID` varchar(255) NOT NULL DEFAULT '',
+  `GuideFirstName` varchar(255) DEFAULT NULL,
+  `GuideLastName` varchar(255) DEFAULT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `phno` varchar(255) DEFAULT NULL,
+  `emailid` varchar(255) DEFAULT NULL,
+  `languagesKnown` varchar(255) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`GuideID`),
+  KEY `emailid` (`emailid`),
+  KEY `GuideID` (`city`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `touristguides` */
+
+insert  into `touristguides`(`city`,`GuideID`,`GuideFirstName`,`GuideLastName`,`address`,`phno`,`emailid`,`languagesKnown`,`status`) values ('Hyderbad','1001','adi','adi','hyd','7777','adi','telugu','free'),('Hyderbad','1002','basava','basava','basava','98797','avh','dfj','khkk'),('Vijayawada','1003','kiran','kiran','Vijayawada','9908221655','kiran@dhanush.co.in','Telugu,English','free'),('Tirupati','1004','rajesh','rajesh','Tirupati','99032467','rajesh@yahoo.co.in','Teelugu','busy'),('Vizag','1006','balaredy','balareddy','Vizag','98989889','sdf','jdf','free'),('Warangal','1007','ramkumar','ramkumar','avg','99087766','dh','gdfh','full'),('Nagarjunsagar','1008','naresh','naresh','palakollu','990909999','hjh','ggjg','full');
+
+/*Table structure for table `tourlocations` */
+
+DROP TABLE IF EXISTS `tourlocations`;
+
+CREATE TABLE `tourlocations` (
+  `City` varchar(255) NOT NULL DEFAULT '',
+  `State` varchar(255) DEFAULT NULL,
+  `Country` varchar(255) DEFAULT NULL,
+  `pin` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`City`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `tourlocations` */
+
+insert  into `tourlocations`(`City`,`State`,`Country`,`pin`) values ('Hyderbad','AndhraPradesh','India','5000001'),('Nagarjunsagar','AndhraPradesh','India','5000121'),('Tirupati','AndhraPradesh','India','5434343'),('Vijayawada','AndhraPradesh','India','879797'),('Vizag','AndhraPradesh','India','523434'),('Warangal','AndhraPradesh','India','523232');
+
+/*Table structure for table `tours` */
+
+DROP TABLE IF EXISTS `tours`;
+
+CREATE TABLE `tours` (
+  `HotelName` int(10) DEFAULT NULL,
+  `FoodType1` int(10) DEFAULT NULL,
+  `FoodType1Cost` varchar(255) DEFAULT NULL,
+  `tour_description` varchar(255) DEFAULT NULL,
+  `other_details` varchar(255) DEFAULT NULL,
+  KEY `tour_toi_id` (`HotelName`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `tours` */
+
+/*Table structure for table `transport` */
+
+DROP TABLE IF EXISTS `transport`;
+
+CREATE TABLE `transport` (
+  `Tourorganisationid` varchar(255) NOT NULL DEFAULT '',
+  `City` varchar(255) DEFAULT NULL,
+  `CarName` varchar(255) DEFAULT NULL,
+  `CarModel` varchar(255) DEFAULT NULL,
+  `Cost1day` int(10) DEFAULT NULL,
+  `COsthalfday` int(10) DEFAULT NULL,
+  `Cost1hr` int(10) DEFAULT NULL,
+  `Cost1Km` int(10) DEFAULT NULL,
+  PRIMARY KEY (`Tourorganisationid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `transport` */
+
+insert  into `transport`(`Tourorganisationid`,`City`,`CarName`,`CarModel`,`Cost1day`,`COsthalfday`,`Cost1hr`,`Cost1Km`) values ('102','Hyderbad','ccc','ddd',1000,600,9,9),('103','Hyderbad','ttt','bbb',9999,888,9,7),('104','Vijayawada','TataSumo','SuperModel',565,234,7,6),('105','Tirupati','Scropio','SuperModel',1200,600,12,10),('106','Vizag','hhh','hhhh',6000,765,4,7),('107','Warangal','jjj','hjj',1800,1200,9,8),('108','nagarjunsagar','yyyy','yyyy',2000,1000,10,8),('34','Vijayawada','Santro','Indica',345,150,5,6);
+
+/*Table structure for table `transportbooking` */
+
+DROP TABLE IF EXISTS `transportbooking`;
+
+CREATE TABLE `transportbooking` (
+  `Loginname` varchar(255) DEFAULT NULL,
+  `FirstName` varchar(255) DEFAULT NULL,
+  `Lastname` varchar(255) DEFAULT NULL,
+  `City` varchar(255) DEFAULT NULL,
+  `State` varchar(255) DEFAULT NULL,
+  `Car` varchar(255) DEFAULT NULL,
+  `Days` int(10) DEFAULT NULL,
+  `hours` int(10) DEFAULT NULL,
+  `TotalCost` int(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `transportbooking` */
+
+insert  into `transportbooking`(`Loginname`,`FirstName`,`Lastname`,`City`,`State`,`Car`,`Days`,`hours`,`TotalCost`) values ('adi','adi','basava','Hyderbad','AndhraPradesh','Scropio',4,3,40023),('basava','basava','repallie','Vijayawada','AndhraPradesh','Indica',4,3,40023),('kumar','kumar','kumar','Vijayawada','AndhraPradesh','TataSumo',3,3,1716),('naga','naga','naga','Hyderbad','AndhraPradesh','Scropio',4,4,4848),('chenni','dfg','badri','Hyderbad','AndhraPradesh','santro',3,2,18008),('malli','badri','badri','Hyderbad','AndhraPradesh','santro',5,5,9045),('naga','badri','badri','Hyderbad','AndhraPradesh','santro',4,4,40032),('df','sdfs','badri','Hyderbad','AndhraPradesh','santro',2,1,4010),('badri','adi','adi','Hyderbad','AndhraPradesh','TataSumo',2,1,1137),('naresh','rtr','ret','Vijayawada','AndhraPradesh','TataSumo',3,3,1716),('kishor','ramu','ramu','Vijayawada','AndhraPradesh','TataSumo',7,6,3997),('phani','ramu','ramu','Hyderbad','AndhraPradesh','TataSumo',7,6,3997),('prasad','raju','raju','Vijayawada','AndhraPradesh','Scropio',3,3,3636),('vikram','vikram','vikram','Hyderbad','AndhraPradesh','Santro',2,2,700),('vikram','vikram','vikram','Vizag','AndhraPradesh','Santro',3,2,1045),('vikram','vikram','vikram','Hyderbad','AndhraPradesh','Santro',4,4,1400),('giri','giri','giri','Hyderbad','AndhraPradesh','Santro',4,4,1400),('naga','naga','naga','Hyderbad','AndhraPradesh','Santro',4,4,1400),('adi','kumar','repallie','Hyderbad','AndhraPradesh','Santro',3,3,1050);
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
